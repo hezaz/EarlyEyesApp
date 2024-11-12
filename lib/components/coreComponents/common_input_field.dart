@@ -11,7 +11,7 @@ class CommonInputField extends StatelessWidget {
   Function(String)? onChanged;
   Function(String)? onFieldSubmitted;
   String? Function(String?)? validator;
-  TextEditingController controller;
+  TextEditingController? controller;
   TextInputType? inputType;
   double? marginLeft;
   double? marginRight;
@@ -49,7 +49,7 @@ class CommonInputField extends StatelessWidget {
 
   CommonInputField({
     Key? key,
-    required this.controller,
+    this.controller,
     this.hint,
     this.onChanged,
     this.validator,

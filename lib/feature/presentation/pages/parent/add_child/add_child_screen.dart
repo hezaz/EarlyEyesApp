@@ -4,7 +4,6 @@ import 'package:early_eyes/utils/extensions/contextExtensions.dart';
 import 'package:early_eyes/utils/validations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../../components/coreComponents/TextView.dart';
 import '../../../../../components/coreComponents/appDropDown.dart';
 import '../../../../../components/coreComponents/app_date_picker.dart';
@@ -15,7 +14,6 @@ import '../../../../../components/coreComponents/editProfileImage.dart';
 import '../../../../../components/styles/appColors.dart';
 import '../../../../../components/styles/appImages.dart';
 import '../../../../../components/styles/app_strings.dart';
-
 import '../../../../controller/child_controller.dart';
 import '../../../widgets/common_scaffold_widget.dart';
 
@@ -47,7 +45,8 @@ class _AddChildScreenState extends State<AddChildScreen> {
                   icon: Image.asset(
                     AppImages.backBtn,
                     height: 24,
-                  )),
+                  )
+              ),
             ),
             title: AppStrings.addChild,
             body: Form(

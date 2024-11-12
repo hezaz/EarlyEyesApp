@@ -80,5 +80,19 @@ class AppImages {
   static const String bank = '${_path}bank.png';
   static const String gPay = '${_path}gpay.png';
   static const String filter = '${_path}filter.jpg';
+  static const String nowifi = '${_path}no-wifi.png';
+  static const String nodata = '${_path}nodata.png';
+  static const String loading = '${_path}loading.png';
+  static const String child = '${_path}child.png';
+  static const String addchild = '${_path}addchild.png';
+  static const String nonotification = '${_path}notification.png';
+  static const String nomessage = '${_path}nomessage.png';
+  static const String del = '${_path}del.png';
+  static const String export = '${_path}export.png';
+  static const String document = '${_path}google-docs.png';
+  static const String picture = '${_path}picture.png';
+  static const String python = '${_path}python.png';
+  static const String buydetail = '${_path}buydetail.png';
+  static const String upload = '${_path}upload.png';
 
 }

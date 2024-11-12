@@ -87,7 +87,7 @@ class ChildController extends GetxController {
 
     getChildDetails();
     formattedDate.value =
-        DateFormat('yyyy-MM-dd').format(selectedDate.value).toString();
+        DateFormat('dd-MM-yyyy').format(selectedDate.value).toString();
     super.onInit();
   }
 

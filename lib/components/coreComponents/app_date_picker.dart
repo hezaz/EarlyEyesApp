@@ -33,7 +33,7 @@ Future<String?> selectDate(
   if (pickedDate != null && pickedDate != selectedDate) {
     selectedDate = pickedDate;
 
-    ctrl.text = dateFormat ?? DateFormat('MM-dd-yyyy')
+    ctrl.text = dateFormat ?? DateFormat('dd-MM-yyyy')
         .format(selectedDate)
         .toString();
   }

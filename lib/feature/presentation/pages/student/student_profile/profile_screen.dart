@@ -1,6 +1,5 @@
 import 'package:early_eyes/components/coreComponents/TextView.dart';
 import 'package:early_eyes/components/styles/textStyles.dart';
-import 'package:early_eyes/feature/presentation/pages/profile/project_screen.dart';
 import 'package:early_eyes/utils/extensions/contextExtensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,14 +10,9 @@ import '../../../../../components/styles/appImages.dart';
 import '../../../../../components/styles/app_strings.dart';
 import '../../../../../services/network/ApiUrls.dart';
 import '../../../../controller/home_controller.dart';
-import '../../../../controller/profile_controller.dart';
-import '../../../widgets/common_card.dart';
 import '../../../widgets/common_richtext.dart';
 import '../../../widgets/common_scaffold_widget.dart';
 import '../../../widgets/courses_view.dart';
-import '../../profile/calender_screen.dart';
-import '../../profile/my_courses.dart';
-import '../../profile/quiz_result_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -33,13 +27,13 @@ class ProfileScreen extends StatelessWidget {
             context.pop();
           },
           title: AppStrings.profile,
-          body: ListView(
+          body:
+          ListView(
             children: [
               Center(
                 child: Obx(() =>
                   ImageView(
-                    url:
-                        '${ApiUrls.baseUrlImage}${controller.userProfile.value?.profilePic}',
+                    url: '${ApiUrls.baseUrlImage}${controller.userProfile.value?.profilePic}',
                     imageType: ImageType.network,
                     radiusWidth: 3.0,
                     radius: 100,
@@ -68,10 +62,12 @@ class ProfileScreen extends StatelessWidget {
                   title: 'Gender:',
                   subtitle: controller.userProfile.value?.gender.toString() ?? "")),
               Obx(() => CommonRichText(
-                    title: 'Date of Birth:',
-                    subtitle:  DateFormat('dd-MM-yyyy').format(DateTime.parse('${controller.userProfile.value!.dob.toString()}')),
+                title: 'Date of Birth:',
+                subtitle: controller.userProfile.value?.dob != null
+                    ? DateFormat('dd-MM-yyyy').format(DateTime.parse(controller.userProfile.value!.dob.toString()))
+                    : '',
+              )),
 
-                  )),
               Obx(() => CommonRichText(
                   title: 'Class:',
                   subtitle:
@@ -86,7 +82,6 @@ class ProfileScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 16,bottom: 8),
                 child: Divider(
-
                   indent: 16,
                   endIndent: 16,
                   color: AppColors.primaryBlue.withOpacity(0.5),
@@ -97,8 +92,6 @@ class ProfileScreen extends StatelessWidget {
                 height: 35,
               ),
               CoursesView(
-
-
               ),
             ],
           ),

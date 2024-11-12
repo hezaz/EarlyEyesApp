@@ -3,17 +3,10 @@ import 'package:early_eyes/utils/enum.dart';
 import 'package:early_eyes/utils/extensions/extensions.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../feature/data/models/requestModels/login_res_model.dart';
-import '../../feature/data/models/requestModels/parent_res_model.dart';
 import '../../feature/data/models/requestModels/profile_res_model.dart';
-import '../../feature/data/models/requestModels/student_res_model.dart';
-import '../../feature/data/models/requestModels/teacher_res_model.dart';
-import '../../feature/data/models/requestModels/user_data.dart';
-
-
 
 class Preferences {
-  
+
   static const _uidKey = 'uid_early_eyes';
   static const authToken = 'pref_auth_token';
   static const prefKeyIsFirstLaunch = 'pref_key_is_first_launch';
@@ -41,12 +34,10 @@ class Preferences {
       role != null ? _prefs.setString(userRoleKey, role.name) : _prefs.remove(userRoleKey);
 
   static SignUpType? get getUserRole {
-   final value = _prefs.getString(_uidKey);
-   return value?.getUserRole;
-   // switch(value){
-   //   case SignUpType.studentType.name:
-   // }
+    final value = _prefs.getString(userRoleKey);
+    return value?.getUserRole;
   }
+
 
   static bool get isFirstLaunch =>
       (getPref(prefKeyIsFirstLaunch) ?? true) as bool;
@@ -57,29 +48,34 @@ class Preferences {
 
   static UserData? get user {
     String? user = _prefs.getString(prefKeyUser);
-    if(user !=null){
-      try{
+    if (user != null) {
+      try {
         final data = UserData.fromJson(jsonDecode(user));
         Logger().d('user fetch from pref');
+        Logger().d('User Role ID: ${data.roleId}');
         return data;
-      }catch(e){
+      } catch (e) {
         Logger().d('user fetch exptch :: $e');
         return null;
       }
-
-    }else{
+    } else {
       return null;
     }
   }
 
-  static set user(UserData? userData){
+
+
+
+  static set user12(UserData? userData) {
     Logger().d(userData?.toJson());
-    if(userData !=null){
-      _prefs.setString(prefKeyUser,jsonEncode(userData.toJson()));
-    }else{
+    if (userData != null) {
+      _prefs.setString(prefKeyUser, jsonEncode(userData.toJson()));
+      Logger().d('Updated User Role ID: ${userData.roleId}');
+    } else {
       _prefs.remove(prefKeyUser);
     }
   }
+
 
   //----------------------------------[Student]---------------------------//
   static UserData? get student {

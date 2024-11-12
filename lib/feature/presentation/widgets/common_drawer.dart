@@ -5,6 +5,7 @@ import 'package:early_eyes/components/styles/textStyles.dart';
 
 import 'package:early_eyes/services/network/ApiUrls.dart';
 import 'package:early_eyes/services/prefrences/prefrences.dart';
+import 'package:early_eyes/utils/appUtils.dart';
 import 'package:early_eyes/utils/extensions/contextExtensions.dart';
 
 import 'package:flutter/material.dart';
@@ -70,19 +71,17 @@ class CommonDrawer extends StatelessWidget {
                           controller.tabView(index);
                           if (index == 7) {
                             context.openDialog(CommonDialogCard(
-
                               isLoading: controller.logoutLoader,
                               msg: AppStrings.logout,
                               title: AppStrings.logoutMsg,
                               negativeCallBk: () {
-
                                Get.back();
-
                               },
                               positiveCallBk: () {
                                 controller.userLogout().then((value) {
+                                  AppUtils.log("ffdfsfsdfsdfsdfsf");
                                   context.pop();
-                                  controller.logoutLoader.value = false;
+                                  controller.logoutLoader.value = true;
                                   Preferences.user == null;
                                   Preferences.removeUserData();
                                   context.pushAndClearNavigator(LoginScreen());

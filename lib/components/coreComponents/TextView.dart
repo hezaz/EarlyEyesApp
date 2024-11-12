@@ -10,6 +10,7 @@ final FontWeight? fontWeight; final double? lineHeight;
 final FontStyle? fontStyle;
 final double? letterSpacing;
 final TextOverflow ?overflow;
+final TextInputType ?Keyboardtype;
 final EdgeInsets? margin;
 final Function()? onTap;
 const TextView( {super.key, required this.text,
@@ -26,7 +27,7 @@ const TextView( {super.key, required this.text,
   this.underlineColor, this.strikeThrough,
   this.capitalise,
   this.letterSpacing,
-  this.overflow, this.margin, this.onTap});
+  this.overflow, this.margin, this.onTap, this.Keyboardtype});
 @override
 Widget build(BuildContext context) {
   return
@@ -34,12 +35,12 @@ Widget build(BuildContext context) {
     Padding(
       padding: margin ?? EdgeInsets.zero, child: GestureDetector(
       onTap: onTap, child:  Text(
+
       capitalise != null && capitalise! ? text.toUpperCase() : text, maxLines: maxlines,
       overflow: maxlines != null ? TextOverflow.ellipsis : null, textAlign: textAlign,
       style: style ?? 14.txtRegularBlackText,
+
     ), ),
     );
-
-
 }
 }

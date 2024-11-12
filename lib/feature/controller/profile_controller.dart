@@ -1,5 +1,6 @@
 import 'package:early_eyes/components/styles/app_strings.dart';
 import 'package:early_eyes/feature/controller/home_controller.dart';
+import 'package:early_eyes/feature/data/models/requestModels/student_profile_res_model.dart';
 import 'package:early_eyes/feature/presentation/pages/profile/project_screen.dart';
 import 'package:early_eyes/services/prefrences/prefrences.dart';
 import 'package:early_eyes/utils/alert_service.dart';
@@ -49,7 +50,7 @@ class ProfileController extends GetxController {
   void onInit() {
     getUserProfile();
     formattedDate.value =
-        DateFormat('yyyy-MM-dd').format(selectedDate.value).toString();
+        DateFormat('dd-MM-yyyy').format(selectedDate.value).toString();
     super.onInit();
   }
   RxInt selectedTab = (-1).obs;
@@ -304,7 +305,7 @@ class ProfileController extends GetxController {
 
       var response = await PostRequests.editParentInfo(requestBody, imagesData);
       if (response?.success == true) {
-        Preferences.user = response?.data;
+        Preferences.user12 = response?.data;
         Get.put(HomeController()).getUserProfile();
         Get.put(HomeController()).userProfile.refresh();
         Get.put(HomeController()).getProfile.refresh();
@@ -383,9 +384,9 @@ class ProfileController extends GetxController {
           await PostRequests.editTeacherInfo(requestBody, imagesData);
       if (response?.success == true) {
         parentLoader.value = false;
-        Preferences.user = response?.data;
+        Preferences.user12 = response?.data;
 
-        Preferences.user = response?.data;
+        Preferences.user12 = response?.data;
         Get.put(HomeController()).getUserProfile();
         Get.put(HomeController()).userProfile.refresh();
         Get.put(HomeController()).getProfile.refresh();
@@ -444,7 +445,7 @@ class ProfileController extends GetxController {
       }
       var response = await PostRequests.editChild(requestBody, imagesData);
       if (response?.success == true) {
-        Preferences.user = response?.data;
+        Preferences.user12 = response?.data;
         studentLoader.value = false;
         Get.put(HomeController()).getUserProfile();
         Get.put(HomeController()).userProfile.refresh();
@@ -461,5 +462,4 @@ class ProfileController extends GetxController {
       rethrow;
     }
   }
-
 }

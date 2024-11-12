@@ -1,4 +1,3 @@
-
 import 'package:early_eyes/feature/data/models/requestModels/change_password_res_model.dart';
 import 'package:early_eyes/feature/data/models/requestModels/help_res_model.dart';
 import 'package:early_eyes/services/network/remote_services.dart';
@@ -78,7 +77,7 @@ class PostRequests {
       Map<String, String>requestBody) async {
     var apiResponse = await RemoteService.simplePost(requestBody,
         ApiUrls.loginUser);
-
+    print("loginData $requestBody");
     if (apiResponse != null) {
       return loginResModelFromJson(apiResponse.response!);
     } else {

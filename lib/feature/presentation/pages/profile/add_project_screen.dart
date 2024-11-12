@@ -46,8 +46,8 @@ class AddProjectScreen extends StatelessWidget {
                 style: 12.txtRegularDBlue,
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                height: 45,
+                // margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                // height: 45,
                 child: AppDropDown<String>.singleSelect(
                   borderColor: AppColors.darkBlue.withOpacity(0.8),
                   radius: 5,
@@ -65,14 +65,14 @@ class AddProjectScreen extends StatelessWidget {
                 style: 12.txtRegularDBlue,
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                height: 45,
+                // margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                // height: 45,
                 child: AppDropDown<String>.singleSelect(
                   borderColor: AppColors.darkBlue.withOpacity(0.8),
                   radius: 5,
                   hint: AppStrings.selectClass,
                   list: controller.classList,
-                  selectedValue: controller.selectClass?.value,
+                  selectedValue: controller.selectClass.value,
                   singleValueBuilder: (value) => value,
                   itemBuilder: (value) => value,
                   onSingleChange: (value) => controller.selectedClass,

@@ -1,13 +1,10 @@
-import 'package:early_eyes/components/coreComponents/common_app_bar.dart';
 import 'package:early_eyes/components/coreComponents/common_button.dart';
 import 'package:early_eyes/components/coreComponents/common_input_field.dart';
 import 'package:early_eyes/components/styles/textStyles.dart';
-import 'package:early_eyes/feature/controller/settings_controller.dart';
 import 'package:early_eyes/feature/presentation/widgets/common_scaffold_widget.dart';
 import 'package:early_eyes/utils/extensions/contextExtensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../../components/coreComponents/TextView.dart';
 import '../../../../../components/styles/app_strings.dart';
 import '../../../../controller/profile_controller.dart';

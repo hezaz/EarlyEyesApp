@@ -1,11 +1,5 @@
-// To parse this JSON data, do
-//
-//     final loginResModel = loginResModelFromJson(jsonString);
-
 import 'dart:convert';
-
 import 'package:early_eyes/feature/data/models/requestModels/profile_res_model.dart';
-import 'package:early_eyes/feature/data/models/requestModels/user_data.dart';
 
 LoginResModel loginResModelFromJson(String str) => LoginResModel.fromJson(json.decode(str));
 
@@ -34,5 +28,3 @@ class LoginResModel {
     "data": data?.toJson(),
   };
 }
-
-

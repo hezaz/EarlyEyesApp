@@ -14,6 +14,7 @@ import '../../../../../services/network/ApiUrls.dart';
 import '../../../../controller/home_controller.dart';
 import '../../../widgets/common_richtext.dart';
 import '../../../widgets/common_scaffold_widget.dart';
+import '../../payment/enterbankdetail.dart';
 
 class TeacherProfileScreen extends StatefulWidget {
   const TeacherProfileScreen({super.key});
@@ -72,9 +73,11 @@ class _TeacherProfileScreenState extends State<TeacherProfileScreen> {
                   subtitle: controller.userProfile.value?.gender.toString() ?? "")),
               Obx(() => CommonRichText(
                 title: 'Date of Birth:',
-                subtitle: DateFormat('dd-MM-yyyy').format(DateTime.parse('${controller.userProfile.value?.dob.toString()}')),
-
+                subtitle: controller.userProfile.value?.dob != null
+                    ? DateFormat('dd-MM-yyyy').format(DateTime.parse(controller.userProfile.value!.dob.toString()))
+                    : '',
               )),
+
 
               Obx(() => CommonRichText(
                 title: 'University:',
@@ -112,21 +115,29 @@ class _TeacherProfileScreenState extends State<TeacherProfileScreen> {
                           child: TextView(
                             margin: const EdgeInsets.symmetric(vertical: 8),
                           text: 'Request Billing',style: 14.txtSBoldPBlueText),
-                        ))),
-                    Expanded(child: CommonCard(
+                        )
+                    )
+                    ),
+                    Expanded(child:
+                    CommonCard(
                       margin: const EdgeInsets.only(right: 16,left: 4),
                         borderClr: AppColors.primaryBlue,
-                        onTap: (){},
+                        onTap: (){
+                        Enterbankdetail();
+                        },
                         child: Center(
                           child: TextView(
                               margin: const EdgeInsets.symmetric(vertical: 8),
-                              text: 'Request Billing',style: 14.txtSBoldPBlueText),
-                        )))
+                              text: 'Request Billing',style: 14.txtSBoldPBlueText,
+                          ),
+                        )
+                    )
+                    )
                   ],
                 ),
               ),
               CommonCard(
-                  margin: const EdgeInsets.only(right: 180,left: 32),
+                  margin: const EdgeInsets.only(right: 200,left: 32),
                   borderClr: AppColors.primaryBlue,
                   onTap: (){},
                   child: Center(

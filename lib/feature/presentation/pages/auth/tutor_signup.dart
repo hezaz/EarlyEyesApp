@@ -47,7 +47,6 @@ class _TutorSignUpScreenState extends State<TutorSignUpScreen> {
             controller.studentAgreeToTerms.value = false;
             controller.selectedDate.value = DateTime.now();
             context.pop();
-            //context.pushNavigator(SignupScreen());
           },
           body: Form(
             key: controller.tutorFormKey,
@@ -55,7 +54,7 @@ class _TutorSignUpScreenState extends State<TutorSignUpScreen> {
             child: ListView(
               children: [
                 Obx(
-                  () => EditProfileImage(
+                      () => EditProfileImage(
                     radius: 18,
                     size: 90,
                     imageData: controller.tutorImageCtrl,
@@ -114,207 +113,179 @@ class _TutorSignUpScreenState extends State<TutorSignUpScreen> {
                     },
                     controller: controller.confirmPasswordCtrl,
                     hint: AppStrings.enterConfirmPassword),
-                CommonIconButton(
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 90, vertical: 18),
-                    bkColor: AppColors.primaryBlue,
-                    title: TextView(
-                      margin: const EdgeInsets.only(right: 20),
-                      text: AppStrings.addPersonalDetails,
-                      style: 10.txtRegularWhite,
-                    ),
-                    leading: const CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: 12,
-                      child: Icon(Icons.add,
-                          color: AppColors.primaryBlue, size: 18),
-                    ),
-                    onTap: () {
-                      controller.showTutor.value = !controller.showTutor.value;
-                    }),
-                Obx(
-                  () => Visibility(
-                    visible: controller.showTutor.value,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                            margin: const EdgeInsets.only(
-                                right: 165, left: 16, bottom: 8, top: 16),
-                            decoration: const BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
+
+                Container(
+                    margin: const EdgeInsets.only(
+                        right: 165, left: 16, bottom: 8, top: 16),
+                    decoration: const BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(
                               color: Colors.black,
                               width: 2.0,
                             ))),
-                            child: TextView(
-                              text: AppStrings.personalDetails,
-                              style: 21.txtBoldBlack,
-                            )),
-                        TextView(
-                          margin: const EdgeInsets.only(left: 24, top: 16),
-                          text: AppStrings.tutorEmail,
-                          style: 12.txtRegularDBlue,
-                        ),
-                        CommonInputField(
-                            validator: Validations.checkEmptyFieldValidations,
-                            controller: controller.tutorEmailCtrl,
-                            hint: AppStrings.enterTutorEmail),
-                        TextView(
-                          margin: const EdgeInsets.only(left: 24, top: 22),
-                          text: AppStrings.dateOfBirth,
-                          style: 12.txtRegularDBlue,
-                        ),
-                        CommonInputField(
-                            validator: Validations.checkDobValidations,
-                            onTap: () {
-                              FocusScope.of(context).requestFocus(FocusNode());
-                              selectDate(
+                    child: TextView(
+                      text: AppStrings.personalDetails,
+                      style: 21.txtBoldBlack,
+                    )),
 
-                                  context: context,
-                                  ctrl: controller.dobCtrl,
-                                  selectedDate: controller.selectedDate.value);
-                            },
-                            trailing: const Icon(
-                              Icons.calendar_month,
-                              color: AppColors.darkBlue,
-                              size: 16,
-                            ),
-                            controller: controller.dobCtrl,
-                            hint: AppStrings.selectDate),
-                        TextView(
-                          margin: const EdgeInsets.only(left: 24, top: 22),
-                          text: AppStrings.gender,
-                          style: 12.txtRegularDBlue,
+                TextView(
+                  margin: const EdgeInsets.only(left: 24, top: 16),
+                  text: AppStrings.tutorEmail,
+                  style: 12.txtRegularDBlue,
+                ),
+                CommonInputField(
+                    validator: Validations.checkEmptyFieldValidations,
+                    controller: controller.tutorEmailCtrl,
+                    hint: AppStrings.enterTutorEmail),
+                TextView(
+                  margin: const EdgeInsets.only(left: 24, top: 22),
+                  text: AppStrings.dateOfBirth,
+                  style: 12.txtRegularDBlue,
+                ),
+                CommonInputField(
+                    validator: Validations.checkDobValidations,
+                    onTap: () {
+                      FocusScope.of(context).requestFocus(FocusNode());
+                      selectDate(
+                          context: context,
+                          ctrl: controller.dobCtrl,
+                          selectedDate: controller.selectedDate.value);
+                    },
+                    trailing: const Icon(
+                      Icons.calendar_month,
+                      color: AppColors.darkBlue,
+                      size: 16,
+                    ),
+                    controller: controller.dobCtrl,
+                    hint: AppStrings.selectDate),
+                TextView(
+                  margin: const EdgeInsets.only(left: 24, top: 22),
+                  text: AppStrings.gender,
+                  style: 12.txtRegularDBlue,
+                ),
+                Obx(
+                      () => AppDropDown<String>.singleSelect(
+                    error: controller.genderEr.value
+                        ? AppStrings.selectGenderMsg
+                        : null,
+                    borderColor: AppColors.darkBlue.withOpacity(0.8),
+                    radius: 5,
+                    hint: AppStrings.selectGender,
+                    list: controller.gender,
+                    selectedValue: controller.selectGender?.value,
+                    singleValueBuilder: (value) => value,
+                    itemBuilder: (value) => value,
+                    onSingleChange: controller.selectedGender,
+                  ),
+                ),
+                TextView(
+                  margin: const EdgeInsets.only(left: 24, top: 22),
+                  text: AppStrings.universityName,
+                  style: 12.txtRegularDBlue,
+                ),
+                CommonInputField(
+                    validator: Validations.checkEmptyFieldValidations,
+                    controller: controller.schoolNCtrl,
+                    hint: "Enter ${AppStrings.universityName}"),
+                TextView(
+                  margin: const EdgeInsets.only(left: 24, top: 22),
+                  text: AppStrings.preferred,
+                  style: 12.txtRegularDBlue,
+                ),
+                AppDropDown<String>.singleSelect(
+                  error: controller.classEr.value
+                      ? AppStrings.selectCourseMst
+                      : null,
+                  borderColor: AppColors.darkBlue.withOpacity(0.8),
+                  radius: 5,
+                  hint: AppStrings.selectCourse,
+                  list: controller.coursesList,
+                  selectedValue: controller.course?.value,
+                  singleValueBuilder: (value) => value,
+                  itemBuilder: (value) => value,
+                  onSingleChange: controller.selectedCourse,
+                ),
+                TextView(
+                  margin: const EdgeInsets.only(left: 24, top: 22),
+                  text: AppStrings.preferredSchedule,
+                  style: 12.txtRegularDBlue,
+                ),
+                InkWell(
+                  onTap: () {
+                    context.pushNavigator(PreferredScheduleScreen());
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 6),
+                    height: 45,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: AppColors.darkBlue)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Obx(() => TextView(
+                              text: controller.getSelectedListStringify
+                                  .value ==
+                                  ""
+                                  ? AppStrings.availableDays
+                                  : controller.getSelectedListStringify.value,
+                              style: 13.txtRegularDBlue)),
                         ),
-                        Obx(
-                          () => AppDropDown<String>.singleSelect(
-                            error: controller.genderEr.value
-                                ? AppStrings.selectGenderMsg
-                                : null,
-                            borderColor: AppColors.darkBlue.withOpacity(0.8),
-                            radius: 5,
-                            hint: AppStrings.selectGender,
-                            list: controller.gender,
-                            selectedValue: controller.selectGender?.value,
-                            singleValueBuilder: (value) => value,
-                            itemBuilder: (value) => value,
-                            onSingleChange: controller.selectedGender,
-                          ),
-                        ),
-                        TextView(
-                          margin: const EdgeInsets.only(left: 24, top: 22),
-                          text: AppStrings.universityName,
-                          style: 12.txtRegularDBlue,
-                        ),
-                        CommonInputField(
-                            validator: Validations.checkEmptyFieldValidations,
-                            controller: controller.schoolNCtrl,
-                            hint: "Enter ${AppStrings.universityName}"),
-                        TextView(
-                          margin: const EdgeInsets.only(left: 24, top: 22),
-                          text: AppStrings.preferred,
-                          style: 12.txtRegularDBlue,
-                        ),
-                        AppDropDown<String>.singleSelect(
-                          error: controller.classEr.value
-                              ? AppStrings.selectCourseMst
-                              : null,
-                          borderColor: AppColors.darkBlue.withOpacity(0.8),
-                          radius: 5,
-                          hint: AppStrings.selectCourse,
-                          list: controller.coursesList,
-                          selectedValue: controller.course?.value,
-                          singleValueBuilder: (value) => value,
-                          itemBuilder: (value) => value,
-                          onSingleChange: controller.selectedCourse,
-                        ),
-                        TextView(
-                          margin: const EdgeInsets.only(left: 24, top: 22),
-                          text: AppStrings.preferredSchedule,
-                          style: 12.txtRegularDBlue,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            context.pushNavigator(PreferredScheduleScreen());
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 16),
-                            margin: const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 6),
-                            height: 45,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: AppColors.darkBlue)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Obx(() => TextView(
-                                      text: controller.getSelectedListStringify
-                                                  .value ==
-                                              ""
-                                          ? AppStrings.availableDays
-                                          : controller
-                                              .getSelectedListStringify.value
-                                      // controller.selectedDays.value
-                                      ,
-                                      style: 13.txtRegularDBlue)),
-                                ),
-                                Icon(Icons.keyboard_arrow_down_outlined,
-                                    color: AppColors.greyText.withOpacity(0.7))
-                              ],
-                            ),
-                          ),
-                        ),
-                        TextView(
-                          margin: const EdgeInsets.only(left: 24, top: 22),
-                          text: AppStrings.mailingAddress,
-                          style: 12.txtRegularDBlue,
-                        ),
-                        CommonInputField(
-                            validator: Validations.checkEmptyFieldValidations,
-                            controller: controller.mailingAdrCtrl,
-                            hint: AppStrings.enterMailingAddress),
-                        TextView(
-                          margin: const EdgeInsets.only(left: 24, top: 22),
-                          text: AppStrings.experience,
-                          style: 12.txtRegularDBlue,
-                        ),
-                        Obx(
-                          () => AppDropDown<String>.singleSelect(
-                            error: controller.expEr.value
-                                ? AppStrings.selectExp
-                                : null,
-                            borderColor: AppColors.darkBlue.withOpacity(0.8),
-                            radius: 5,
-                            hint: AppStrings.selectExperience,
-                            list: controller.experience,
-                            selectedValue: controller.selectExp?.value,
-                            singleValueBuilder: (value) => value,
-                            itemBuilder: (value) => value,
-                            onSingleChange: controller.selectedExp,
-                          ),
-                        ),
-                        CommonInputField(
-                            marginBottom: 20,
-                            marginTop: 32,
-                            maxLines: 4,
-                            controller: controller.addNoteCtrl,
-                            hint: AppStrings.presentationMsg),
+                        Icon(Icons.keyboard_arrow_down_outlined,
+                            color: AppColors.greyText.withOpacity(0.7))
                       ],
                     ),
                   ),
                 ),
+                TextView(
+                  margin: const EdgeInsets.only(left: 24, top: 22),
+                  text: AppStrings.mailingAddress,
+                  style: 12.txtRegularDBlue,
+                ),
+                CommonInputField(
+                    validator: Validations.checkEmptyFieldValidations,
+                    controller: controller.mailingAdrCtrl,
+                    hint: AppStrings.enterMailingAddress),
+                TextView(
+                  margin: const EdgeInsets.only(left: 24, top: 22),
+                  text: AppStrings.experience,
+                  style: 12.txtRegularDBlue,
+                ),
+                Obx(
+                      () => AppDropDown<String>.singleSelect(
+                    error: controller.expEr.value
+                        ? AppStrings.selectExp
+                        : null,
+                    borderColor: AppColors.darkBlue.withOpacity(0.8),
+                    radius: 5,
+                    hint: AppStrings.selectExperience,
+                    list: controller.experience,
+                    selectedValue: controller.selectExp?.value,
+                    singleValueBuilder: (value) => value,
+                    itemBuilder: (value) => value,
+                    onSingleChange: controller.selectedExp,
+                  ),
+                ),
+                CommonInputField(
+                    marginBottom: 20,
+                    marginTop: 32,
+                    maxLines: 4,
+                    controller: controller.addNoteCtrl,
+                    hint: AppStrings.presentationMsg),
+
+                // Terms and Conditions
                 Row(
                   children: [
                     Obx(
-                      () => Checkbox(
+                          () => Checkbox(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(2.0),
                           ),
                           side: MaterialStateBorderSide.resolveWith(
-                            (states) => const BorderSide(
+                                (states) => const BorderSide(
                                 width: 1.8, color: AppColors.darkBlue),
                           ),
                           checkColor: AppColors.darkBlue,
@@ -352,15 +323,10 @@ class _TutorSignUpScreenState extends State<TutorSignUpScreen> {
                           (controller.selectGender?.value != null) &&
                           (controller.course?.value != null) &&
                           (controller.selectExp?.value != null)) {
-                        if (controller.showTutor.value == true) {
-                          if (controller.studentAgreeToTerms.value) {
-                            controller.teacherRegister();
-                          } else {
-                            AppAlerts.alert(message: AppStrings.acceptTerms);
-                          }
+                        if (controller.studentAgreeToTerms.value) {
+                          controller.teacherRegister();
                         } else {
-                          AppAlerts.alert(
-                              message: AppStrings.addPersonalDetailsMst);
+                          AppAlerts.alert(message: AppStrings.acceptTerms);
                         }
                       } else {
                         controller.throwError();

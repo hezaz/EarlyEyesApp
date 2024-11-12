@@ -4,8 +4,6 @@ import 'package:early_eyes/feature/presentation/widgets/common_scaffold_widget.d
 import 'package:early_eyes/utils/extensions/contextExtensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-import 'package:logger/logger.dart';
 import '../../../../../components/coreComponents/TextView.dart';
 import '../../../../../components/coreComponents/appDropDown.dart';
 import '../../../../../components/coreComponents/app_date_picker.dart';
@@ -103,7 +101,6 @@ class _EditParentProfileScreenState extends State<EditParentProfileScreen> {
                     onSingleChange: controller.selectRelation,
                   );
                 },
-
               ),
               TextView(
                 margin: const EdgeInsets.only(left: 24, top: 16),

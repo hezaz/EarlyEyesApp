@@ -1,4 +1,5 @@
 import 'package:early_eyes/components/styles/textStyles.dart';
+import 'package:early_eyes/feature/presentation/pages/messages/messages_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../../components/coreComponents/TextView.dart';
 import '../../../../components/styles/appColors.dart';
@@ -27,7 +28,20 @@ class AllStudentCard extends StatelessWidget {
                   margin: const EdgeInsets.only(left: 12),
                   text: 'Sathyana Weerasinghe',style: 14.txtRegularBlack),
               const Spacer(),
-              Image.asset(AppImages.message,height:30),
+
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>  MessagesScreen()),
+                  );
+                },
+                child: Image.asset(
+                  AppImages.message,
+                  height: 30,
+                ),
+              )
+
             ],
           );
         },

@@ -205,8 +205,6 @@ Widget _dropDownWidget(
             },
             child:
 
-
-
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -251,7 +249,7 @@ Widget errorText(String? value){
   return Visibility(
       visible:value != null && value.trim().isNotEmpty,
       child: TextView(
-        margin: const EdgeInsets.only(left: 16),
+        margin: const EdgeInsets.only(left: 32),
         text: value ?? '', style: 12.txtRegularError,));
 }
 

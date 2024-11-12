@@ -1,5 +1,4 @@
 import 'package:early_eyes/components/coreComponents/TextView.dart';
-import 'package:early_eyes/components/coreComponents/common_app_bar.dart';
 import 'package:early_eyes/components/styles/appColors.dart';
 import 'package:early_eyes/components/styles/app_strings.dart';
 import 'package:early_eyes/components/styles/textStyles.dart';
@@ -7,9 +6,7 @@ import 'package:early_eyes/feature/presentation/widgets/common_scaffold_widget.d
 import 'package:early_eyes/utils/extensions/contextExtensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../controller/profile_controller.dart';
-import '../../../../controller/settings_controller.dart';
 
 class FaqScreen extends StatelessWidget {
   const FaqScreen({super.key});

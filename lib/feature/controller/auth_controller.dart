@@ -23,7 +23,7 @@ class AuthController extends GetxController {
   @override
   void onInit() {
     formattedDate.value =
-        DateFormat('MM-dd-yyyy').format(selectedDate.value).toString();
+        DateFormat('yyyy-MM-dd').format(selectedDate.value).toString();
     super.onInit();
   }
 
@@ -107,7 +107,7 @@ class AuthController extends GetxController {
   RxString? selectExp;
   RxString? selectClass;
   final Rx<ImageDataModel> _studentImageCtrl =
-      Rx<ImageDataModel>(ImageDataModel());
+  Rx<ImageDataModel>(ImageDataModel());
 
   ImageDataModel get studentImageCtrl => _studentImageCtrl.value;
 
@@ -192,21 +192,26 @@ class AuthController extends GetxController {
         imagesData = {'profile_pic': studentImageCtrl.file};
       }
       var response =
-          await PostRequests.studentRegister(requestBody, imagesData);
+      await PostRequests.studentRegister(requestBody, imagesData);
+
+      print('Student Register Response: ${requestBody.toString()}');
+
       if (response != null) {
         if (response.success) {
           saveStudentToPref(response.data);
-
           Get.offAll(HomeScreen());
-        } else {}
+        } else {
+          // Handle error
+        }
       }
     } finally {
       isLoading.value = false;
     }
   }
 
+
   void saveStudentToPref(UserData? user) {
-    Preferences.user = user;
+    Preferences.user12 = user;
     Preferences.userToken = user?.token;
   }
 
@@ -234,7 +239,7 @@ class AuthController extends GetxController {
 
   var relationList = ['Mother', 'Father'].obs;
   final Rx<ImageDataModel> _parentImageCtrl =
-      Rx<ImageDataModel>(ImageDataModel());
+  Rx<ImageDataModel>(ImageDataModel());
 
   ImageDataModel get parentImageCtrl => _parentImageCtrl.value;
 
@@ -275,6 +280,8 @@ class AuthController extends GetxController {
       }
       var response = await PostRequests.parentRegister(requestBody, imagesData);
 
+      print('Parent Register Response: ${response.toString()}');
+
       if (response?.success == true) {
         saveParentToPref(response?.data);
         CommonToast.show(msg: response?.message ?? "");
@@ -293,8 +300,9 @@ class AuthController extends GetxController {
     }
   }
 
+
   void saveParentToPref(UserData? user) {
-    Preferences.user = user;
+    Preferences.user12 = user;
     Preferences.userToken = user?.token;
   }
 
@@ -318,7 +326,7 @@ class AuthController extends GetxController {
   }
 
   final Rx<ImageDataModel> _tutorImageCtrl =
-      Rx<ImageDataModel>(ImageDataModel());
+  Rx<ImageDataModel>(ImageDataModel());
 
   ImageDataModel get tutorImageCtrl => _tutorImageCtrl.value;
 
@@ -345,7 +353,7 @@ class AuthController extends GetxController {
 
   RxString get getSelectedListStringify {
     List<CommonModel> list =
-        availableDays.where((element) => element.isSelected == true).toList();
+    availableDays.where((element) => element.isSelected == true).toList();
     return list.map((e) => e.title).join(', ').obs;
   }
 
@@ -391,11 +399,13 @@ class AuthController extends GetxController {
         imagesData = {'profile_pic': tutorImageCtrl.file};
       }
       var response =
-          await PostRequests.teacherRegister(requestBody, imagesData);
+      await PostRequests.teacherRegister(requestBody, imagesData);
+
+      print('Teacher Register Response: ${response.toString()}');
+
       if (response != null) {
         if (response.success) {
           saveTutorToPref(response.data);
-
           Preferences.setUserRole = SignUpType.tutorType;
           Get.offAll(HomeScreen(), arguments: {
             "type": SignUpType.tutorType,
@@ -407,8 +417,9 @@ class AuthController extends GetxController {
     }
   }
 
+
   void saveTutorToPref(UserData? user) {
-    Preferences.user = user;
+    Preferences.user12 = user;
     Preferences.userToken = user?.token;
   }
 
@@ -440,7 +451,7 @@ class AuthController extends GetxController {
       mailLoader.value = false;
     }
   }
-  void selectDate(BuildContext context) async {
+  void selectDate(BuildContext context, Rx<DateTime> selectedDate) async {
     final DateTime? pickedDate = await showDatePicker(
       builder: (context, child) {
         return Theme(
@@ -460,10 +471,15 @@ class AuthController extends GetxController {
       firstDate: DateTime(2018),
       lastDate: DateTime.now(),
     );
+
     if (pickedDate != null && pickedDate != selectedDate.value) {
       selectedDate.value = pickedDate;
-      dobCtrl.text =
-          DateFormat('yyyy-MM-dd').format(selectedDate.value).toString();
+
+      // Set the selected date in the dobCtrl and format as 'yyyy-MM-dd'
+      dobCtrl.text = DateFormat('yyyy-MM-dd').format(selectedDate.value).toString();
     }
   }
+
+
+
 }

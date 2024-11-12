@@ -10,10 +10,12 @@ class AppColors{
   static const Color greyF0 = Color(0xFFF0F0F0);
   static const Color greyD4 = Color(0xFFD4D4D4);
   static const Color greyText = Color(0xFF5C5C5C);
+  static const Color timecolor = Color(0xFF797C7B);
   static const Color grey76 = Color(0xFF767676);
   static const Color primaryBlue = Color(0xFF1976D2);
   static const Color greenToggle = Color(0xFF009E82);
   static const Color red = Color(0xFFEF452F);
+  static const Color messagecolor = Color(0xFF1C2234);
   static const Color bkColor = Color(0xffF5F5F5);
   static const Color green = Color(0xff1F8435);
   static const Color darkBlue = Color(0xff364356);

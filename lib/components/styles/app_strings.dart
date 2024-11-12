@@ -8,19 +8,58 @@ class AppStrings {
   static const String title3 =
       'Empowering tutors to inspire\n and guide students towards\n academic excellence and\n personal growth.';
   static const String skip = 'Skip';
+  static const String paymentmethod = 'Select payment method';
   static const String selectLevel = 'Select Level';
+  static const String findifsc = 'Find ifsc';
+  static const String contactus = 'Contact Us';
+  static const String age = 'Age';
+  static const String time = 'Time';
+  static const String entertime = 'Enter Time';
+  static const String preferredava = 'Preferred availability';
+  static const String selectdays = 'Select Days';
+  static const String attachcv = 'Attach  CV, cover letter, portfolio or any other document you want us to review for your application';
+  static const String resume = 'Resume';
+  static const String school = 'Affiliated School';
+  static const String enterschool = 'Enter Affiliated School';
+  static const String enterage = 'Enter Age (age start from 18)';
+  static const String enteraccno = 'Enter Account Number';
+  static const String entername = 'Enter Name (optional)';
+  static const String enterifsccode = 'Enter Ifsc Code';
+  static const String reenteraccno = 'Re-enter Account Number';
+  static const String accno = 'Account Number';
+  static const String accholdername = 'Account Holder Name';
+  static const String ifsccode = 'Ifsc Code';
+  static const String classCalendar = 'Class calendar';
+  static const String termsandcondations = 'By continuing you agree to our';
+  static const String upload = 'Upload resources';
+  static const String terms = ' Terms & Conditions';
+  static const String enterbankdetails = 'Enter bank details';
+  static const String classLink = 'Class link';
+  static const String selectDateTime = 'Select date & time ';
+  static const String insertClassLink = 'Insert class link';
+  static const String descr = 'Description & Concepts Covered';
   static const String discoverNewCourse = 'Discover new courses ';
   static const String waitingCourses = 'Best Courses are\n waiting for you';
   static const String search = 'Search...';
+  static const String progress = 'Progress & Next Steps';
   static const String students = 'Students';
+  static const String studentsprogress = 'Student progress & next steps';
+  static const String nointernet = 'No internet connection!';
+  static const String nodata = 'No data found!';
   static const String overview = 'Overview';
+  static const String workshopname = 'Workshop name';
+  static const String workshopdescription = 'Workshop description & concepts\ncovered';
+  static const String checkyournetwork = 'Please check your network\nconnection';
+  static const String checkyourdata = 'Maybe go back and try a\ndifferent keyword';
   static const String totalStudent = 'Total Students Assigned : 25';
   static const String buy = 'Buy now';
+  static const String descriptionofskip = 'You can now easily add a new child to your account by filling in their details and assigning them to their respective classes';
   static const String checkEmail = 'Check Email';
   static const String submitQuiz = 'Submit QUiz';
   static const String checkEmailMsg = 'Please check your email to create a new password';
   static const String messages = 'Messages';
   static const String message = 'Message';
+  static const String python = 'PYTHON PROGRAMMING\nWORKSHOP';
   static const String enterMessage = 'Enter Message';
   static const String ok = 'OK';
   static const String saveChanges = 'Save Changes';
@@ -58,7 +97,13 @@ class AppStrings {
 
   static const String email = 'Email';
   static const String phoneNo = 'Phone Number';
+  static const String classduration = 'Class duration';
+  static const String studentna = 'Hedi';
+  static const String classdate = 'Class date & time';
+  static const String date = 'Sunday 27th on 5pm';
+  static const String studentname = 'Student name';
   static const String phone = 'Phone';
+  static const String classnumber = 'Class number';
   static const String enterPhoneNo = 'Enter Phone Number';
   static const String enterValidPhoneNo = 'Please enter a valid phone number';
   static const String password = 'Password';
@@ -77,10 +122,12 @@ class AppStrings {
   static const String enterFullName = ' Enter Full Name';
   static const String confirmPassword = 'Confirm Password';
   static const String enterConfirmPassword = ' Enter Confirm Password';
-  static const String personalDetails = 'Personal Details';
-  static const String tutorDetails = 'Personal Details';
-  static const String addPersonalDetails = 'Add Personal Details';
+  static const String personalDetails = 'Personal details';
+  static const String tutorDetails = 'Personal details';
+  static const String addPersonalDetails = 'Add Personal details';
   static const String studentEmail = 'Student Email';
+  static const String gallery = 'Gallery';
+  static const String document = 'Document';
 
   static const String childEmail = 'Child Email';
   static const String childName = 'Child Name';
@@ -132,6 +179,7 @@ class AppStrings {
   static const String viewAll = 'View All';
   static const String quizzes = 'Quizzes';
   static const String events = 'Events';
+  static const String tryagain = 'TRY AGAIN';
   static const String needHelp = 'Need help? Ask us ';
   static const String needHelp1 = 'Need help';
   static const String quizMsg = '"Engage with online quizzes to'
@@ -147,8 +195,9 @@ class AppStrings {
   static const String objectives = 'Objectives';
   static const String objectiveMsg =
       'This workshop aims to guide children through the fundamentals of Python programming, enhance their logical thimking skills.';
-  static const String preferred = 'Preferred course';
+  static const String preferred = 'Select course';
   static const String selectCourse = 'Select Course';
+  static const String skipscreentext = 'You can now easily add a new child to your account by filling in their details and assigning them to their respective classes';
   static const String academicResources = 'Academic resources';
   static const String otherStudent = 'Other Student';
   static const String preferredSchedule = 'Preferred schedule';
@@ -287,5 +336,9 @@ static const String cardDetails = 'Enter your card details';
 static const String bankDetails = 'Make your payment directly into our bank account.';
 static const String upiDetails = 'Pay with apple pay or google pay';
 static const String selectPaymentMode = 'Select payment method';
+static const String nonotifications = 'You have no notifications today';
+static const String nomessage = 'You have no message today';
+static const String paymenthistory = 'Payment history';
+static const String buydetails = 'Buy Details';
 
 }

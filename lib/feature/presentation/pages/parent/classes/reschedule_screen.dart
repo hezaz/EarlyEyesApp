@@ -88,8 +88,8 @@ class RescheduleScreen extends StatelessWidget {
                 margin: EdgeInsets.only(left: 16, top: 32),
                 text: AppStrings.selectDay),
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              height: 45,
+              // margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+              // height: 45,
               child: AppDropDown<String>.singleSelect(
                 style: 12.txtRegularGreyHint,
                 borderColor: AppColors.darkBlue.withOpacity(0.8),
@@ -106,8 +106,8 @@ class RescheduleScreen extends StatelessWidget {
                 margin: EdgeInsets.only(left: 16, top:context.getHeight/25),
                 text: AppStrings.addTime),
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              height: 45,
+              // margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+              // height: 45,
               child: AppDropDown<String>.singleSelect(
                 style: 12.txtRegularGreyHint,
                 icon: Image.asset(AppImages.clock, height: 22),

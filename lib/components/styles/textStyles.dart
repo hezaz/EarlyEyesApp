@@ -24,9 +24,10 @@ extension TextStyles on num{
  //medium
   TextStyle get txtMediumWhite => _textStyle(this,AppColors.white,Family.medium);
   TextStyle get txtMediumPBlue => _textStyle(this,AppColors.primaryBlue,Family.medium);
-  TextStyle get txtMediumBlue => _textStyle(this,AppColors.blue,Family.medium);
+  TextStyle get txtMediumBlue => _textStyle(this,AppColors.primaryBlue,Family.medium);
   TextStyle get txtMediumDBlue => _textStyle(this,AppColors.darkBlue,Family.medium);
   TextStyle get txtMediumBlack => _textStyle(this,AppColors.black,Family.medium);
+  TextStyle get txtMediumprimaryblue => _textStyle(this,AppColors.primaryBlue,Family.medium);
   TextStyle get txtMediumLBlack => _textStyle(this,AppColors.blue34,Family.medium);
   TextStyle get txtMediumGrey => _textStyle(this,AppColors.grey76,Family.medium);
 

@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 3), () {
       context.pushAndClearNavigator(
           Preferences.user != null ? HomeScreen() : Preferences.isFirstLaunch
-              ? const OnBoardingScreen()
+              ? OnBoardingScreen()
               : LoginScreen());
     });
   }

@@ -66,7 +66,7 @@ String? title;
                   : index == 1
                   ? "Calender"
                   : index == 2
-                  ? "Quiz"
+                  ? "Quiz Result"
                   : "My Courses",
               style: 14.txtMediumWhite,
             ),

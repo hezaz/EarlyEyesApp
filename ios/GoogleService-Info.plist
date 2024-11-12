@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>63451462632-8aakk0hj2c30v8644l643e66a49e9335.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.63451462632-8aakk0hj2c30v8644l643e66a49e9335</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>63451462632-58rqj1g3diuejletl58tcdi4b76r4jac.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAWZt_-Clpk0PvnyrlYRjE4v9zfZhf_9NA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>63451462632</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.earlyeyes.earlyEyes</string>
+	<key>PROJECT_ID</key>
+	<string>earlyeyes-89fab</string>
+	<key>STORAGE_BUCKET</key>
+	<string>earlyeyes-89fab.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:63451462632:ios:1960c34ab1d5f6b2e4c25d</string>
+</dict>
+</plist>

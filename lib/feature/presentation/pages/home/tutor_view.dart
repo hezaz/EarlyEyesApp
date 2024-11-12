@@ -40,49 +40,50 @@ class TutorView extends StatelessWidget {
         // NextClassWidget(
         //     padding:const EdgeInsets.symmetric(horizontal: 16)
         // ),
-        ViewAllBtn(
-          onClick: () {
-            context.pushNavigator(CourseScreen());
-          },
-          padding: const EdgeInsets.only(
-              left: 16, right: 16, top: 16),
-          text: AppStrings.myClasses,
-        ),
-        SizedBox(
-          width: context.getWidth,
-          height: 220,
-          child: Obx(() =>
-            ListView.separated(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 16),
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return CoursesCard(
-                    onClick: (){
-                      controller.getDetails(controller
-                          .courses[index].id);
-                      context.pushNavigator(TutorCourseDetailScreen());
+        Obx(() {
+
+          if (controller.courses.isEmpty) {
+            return const SizedBox.shrink();
+          } else {
+            return Column(
+              children: [
+                ViewAllBtn(
+                  onClick: () {
+                    context.pushNavigator(CourseScreen());
+                  },
+                  padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
+                  text: AppStrings.myClasses,
+                ),
+                SizedBox(
+                  width: context.getWidth,
+                  height: 220,
+                  child: ListView.separated(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return CoursesCard(
+                        onClick: () {
+                          controller.getDetails(controller.courses[index].id);
+                          context.pushNavigator(TutorCourseDetailScreen());
+                        },
+                        image: controller.courses[index].courseThumbnails.toString(),
+                        title: controller.courses[index].courseCategory.toString(),
+                        subTitle: '₹${controller.courses[index].price.toString()}',
+                      );
                     },
-                    image: controller
-                        .courses[index].courseThumbnails
-                        .toString(),
-                    title:controller
-                        .courses[index].courseCategory
-                        .toString(),
-                    subTitle:'₹${ controller
-                          .courses[index].price
-                          .toString()}',
+                    separatorBuilder: (context, index) {
+                      return const SizedBox(width: 22);
+                    },
+                    itemCount: controller.courses.length,
+                  ),
+                ),
+              ],
+            );
+          }
+        }),
 
 
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return const SizedBox(width: 22);
-                },
-                itemCount: controller.courses.length),
-          ),
-        ),
 
         ViewAllBtn(
           isVisible: false,

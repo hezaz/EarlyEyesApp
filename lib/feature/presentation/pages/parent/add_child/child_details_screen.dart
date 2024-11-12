@@ -25,7 +25,6 @@ class ChildDetailsScreen extends StatelessWidget {
       init: ChildController(),
       builder: (ChildController controller) {
         return CommonScaffold(
-
             floatingActionBtn:   Obx(() =>
             controller.childDetails.isNotEmpty
                 ? CommonButton(

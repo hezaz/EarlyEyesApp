@@ -48,11 +48,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 CommonInputField(
                     validator: Validations.checkEmailValidations,
                     controller: controller.emailCtrl,
-                    hint: AppStrings.enterEmail),
+                    hint: AppStrings.enterEmail,
+                ),
                 TextView(
                   margin: const EdgeInsets.only(left: 24, top: 16),
                   text: AppStrings.password,
                   style: 12.txtRegularDBlue,
+
                 ),
                 CommonPasswordInputField(
                     marginBottom: 0,
@@ -84,6 +86,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           context.pushAndClearNavigator(HomeScreen());
                         });
                       }
+
+                      // context.pushAndClearNavigator(HomeScreen());
                     }),
                 Center(
                   child: RichText(
@@ -117,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 CommonIconButton(
                   onTap: () {
 
-                    controller.loginWithGoogle();
+                    // controller.loginWithGoogle();
                   },
                 ),
                 CommonIconButton(

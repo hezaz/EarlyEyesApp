@@ -22,6 +22,19 @@ import 'login/login_screen.dart';
 class ParentSignupScreen extends StatelessWidget {
   const ParentSignupScreen({super.key});
 
+  // Method to show loader
+  void _showLoader() {
+    Get.dialog(
+      Center(child: CircularProgressIndicator()),
+      barrierDismissible: false, // Prevents dialog from being dismissed
+    );
+  }
+
+  // Method to hide loader
+  void _hideLoader() {
+    Get.back(); // Closes the dialog
+  }
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<AuthController>(
@@ -39,7 +52,7 @@ class ParentSignupScreen extends StatelessWidget {
             child: ListView(
               children: [
                 Obx(
-                  () => EditProfileImage(
+                      () => EditProfileImage(
                     radius: 18,
                     size: 90,
                     imageData: controller.parentImageCtrl,
@@ -53,59 +66,63 @@ class ParentSignupScreen extends StatelessWidget {
                   style: 12.txtRegularDBlue,
                 ),
                 CommonInputField(
-                    validator: Validations.checkNameValidations,
-                    controller: controller.nameCtrl,
-                    hint: AppStrings.enterFullName),
+                  validator: Validations.checkNameValidations,
+                  controller: controller.nameCtrl,
+                  hint: AppStrings.enterFullName,
+                ),
                 TextView(
                   margin: const EdgeInsets.only(left: 24, top: 16),
                   text: AppStrings.email,
                   style: 12.txtRegularDBlue,
                 ),
                 CommonInputField(
-                    validator: Validations.checkEmailValidations,
-                    controller: controller.emailCtrl,
-                    hint: AppStrings.enterEmail),
+                  validator: Validations.checkEmailValidations,
+                  controller: controller.emailCtrl,
+                  hint: AppStrings.enterEmail,
+                ),
                 TextView(
                   margin: const EdgeInsets.only(left: 24, top: 16),
                   text: AppStrings.phoneNo,
                   style: 12.txtRegularDBlue,
                 ),
                 CommonInputField(
-                    maxLength: 10,
-                    inputType: TextInputType.number,
-                    validator: Validations.checkPhoneValidations,
-                    controller: controller.mobileCtrl,
-                    hint: AppStrings.enterPhoneNo),
+                  maxLength: 10,
+                  inputType: TextInputType.number,
+                  validator: Validations.checkPhoneValidations,
+                  controller: controller.mobileCtrl,
+                  hint: AppStrings.enterPhoneNo,
+                ),
                 TextView(
                   margin: const EdgeInsets.only(left: 24, top: 16),
                   text: AppStrings.dateOfBirth,
                   style: 12.txtRegularDBlue,
                 ),
                 CommonInputField(
-                    hintStyle: 13.txtRegularGreyText,
-                    validator: Validations.checkDobValidations,
-                    onTap: () {
-                      FocusScope.of(context).requestFocus(FocusNode());
-                      selectDate(
-                        context: context,
-                        ctrl: controller.dobCtrl,
-                        selectedDate: controller.selectedDate.value,
-                      );
-                    },
-                    trailing: const Icon(
-                      Icons.calendar_month,
-                      color: AppColors.darkBlue,
-                      size: 16,
-                    ),
-                    controller: controller.dobCtrl,
-                    hint: AppStrings.selectDate),
+                  hintStyle: 13.txtRegularGreyText,
+                  validator: Validations.checkDobValidations,
+                  onTap: () {
+                    FocusScope.of(context).requestFocus(FocusNode());
+                    selectDate(
+                      context: context,
+                      ctrl: controller.dobCtrl,
+                      selectedDate: controller.selectedDate.value,
+                    );
+                  },
+                  trailing: const Icon(
+                    Icons.calendar_month,
+                    color: AppColors.darkBlue,
+                    size: 16,
+                  ),
+                  controller: controller.dobCtrl,
+                  hint: AppStrings.selectDate,
+                ),
                 TextView(
                   margin: const EdgeInsets.only(left: 24, top: 16),
                   text: AppStrings.studentRelation,
                   style: 12.txtRegularDBlue,
                 ),
-                Obx(()=>
-                   AppDropDown<String>.singleSelect(
+                Obx(
+                      () => AppDropDown<String>.singleSelect(
                     error: controller.relationEr.value
                         ? AppStrings.selectRelationMsg
                         : null,
@@ -125,93 +142,109 @@ class ParentSignupScreen extends StatelessWidget {
                   style: 12.txtRegularDBlue,
                 ),
                 CommonPasswordInputField(
-                    validator: Validations.checkPasswordValidations,
-                    marginBottom: 24,
-                    controller: controller.passwordCtrl,
-                    hint: AppStrings.enterPassword),
+                  validator: Validations.checkPasswordValidations,
+                  marginBottom: 24,
+                  controller: controller.passwordCtrl,
+                  hint: AppStrings.enterPassword,
+                ),
                 TextView(
                   margin: const EdgeInsets.only(left: 24),
                   text: AppStrings.confirmPassword,
                   style: 12.txtRegularDBlue,
                 ),
                 CommonPasswordInputField(
-                    validator: (value) {
-                      return Validations.checkConfirmPasswordValidations(
-                          value, controller.passwordCtrl.text);
-                    },
-                    marginTop: 8,
-                    marginBottom: 20,
-                    controller: controller.confirmPasswordCtrl,
-                    hint: AppStrings.enterConfirmPassword),
+                  validator: (value) {
+                    return Validations.checkConfirmPasswordValidations(
+                      value,
+                      controller.passwordCtrl.text,
+                    );
+                  },
+                  marginTop: 8,
+                  marginBottom: 20,
+                  controller: controller.confirmPasswordCtrl,
+                  hint: AppStrings.enterConfirmPassword,
+                ),
                 Row(
                   children: [
                     Obx(
-                      () => Checkbox(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(2.0),
+                          () => Checkbox(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(2.0),
+                        ),
+                        side: MaterialStateBorderSide.resolveWith(
+                              (states) => const BorderSide(
+                            width: 1.8,
+                            color: AppColors.darkBlue,
                           ),
-                          side: MaterialStateBorderSide.resolveWith(
-                            (states) => const BorderSide(
-                                width: 1.8, color: AppColors.darkBlue),
-                          ),
-                          checkColor: AppColors.darkBlue,
-                          activeColor: AppColors.white,
-                          value: controller.parentAgreeToTerms.value,
-                          onChanged: (val) {
-                            controller.parentAgreeToTerms.value = val!;
-                          }),
+                        ),
+                        checkColor: AppColors.darkBlue,
+                        activeColor: AppColors.white,
+                        value: controller.parentAgreeToTerms.value,
+                        onChanged: (val) {
+                          controller.parentAgreeToTerms.value = val!;
+                        },
+                      ),
                     ),
                     RichText(
                       text: TextSpan(children: [
                         TextSpan(
-                            text: AppStrings.readAndAgree,
-                            style: 10.txtRegularDBlue),
+                          text: AppStrings.readAndAgree,
+                          style: 10.txtRegularDBlue,
+                        ),
                         TextSpan(
-                            text: AppStrings.termsCondition,
-                            style: 12.txtMediumPBlue),
+                          text: AppStrings.termsCondition,
+                          style: 12.txtMediumPBlue,
+                        ),
                         TextSpan(text: "\nand ", style: 10.txtRegularDBlue),
                         TextSpan(
-                            text: AppStrings.privacyPolicy,
-                            style: 12.txtMediumPBlue),
+                          text: AppStrings.privacyPolicy,
+                          style: 12.txtMediumPBlue,
+                        ),
                       ]),
                     )
                   ],
                 ),
                 CommonButton(
-                    isLoading: controller.prentLoader,
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 24),
-                    text: AppStrings.createAccount,
-                    clickAction: () {
-                      controller.relationEr.value = false;
-                      controller.relationEr.refresh();
-                      if (controller.parentFormKey.currentState!.validate() ||
-                          (controller.relation?.value != null)) {
+                  isLoading: controller.prentLoader,
+                  margin: const EdgeInsets.symmetric(
+                      horizontal: 30, vertical: 24),
+                  text: AppStrings.createAccount,
+                  clickAction: () async {
+                    // Show loader
+                    _showLoader();
+                    controller.relationEr.value = false;
+                    controller.relationEr.refresh();
 
-                          if (controller.parentAgreeToTerms.value) {
-                            controller.parentRegister();
-                          } else {
-                            AppAlerts.alert(message: AppStrings.acceptTerms);
-                          }
-
+                    if (controller.parentFormKey.currentState!.validate() &&
+                        (controller.relation?.value != null)) {
+                      if (controller.parentAgreeToTerms.value) {
+                        await controller.parentRegister(); // Wait for registration to complete
                       } else {
-                        controller.relationEr.value = true;
-                        controller.relationEr.refresh();
+                        AppAlerts.alert(message: AppStrings.acceptTerms);
                       }
+                    } else {
+                      controller.relationEr.value = true;
+                      controller.relationEr.refresh();
+                    }
 
-                    }),
+                    // Hide loader
+                    _hideLoader();
+                  },
+                ),
                 Center(
                   child: RichText(
                     text: TextSpan(children: [
                       TextSpan(
-                          text: AppStrings.alreadyAccount,
-                          style: 12.txtRegularDBlue),
+                        text: AppStrings.alreadyAccount,
+                        style: 12.txtRegularDBlue,
+                      ),
                       TextSpan(
-                          recognizer: TapGestureRecognizer()
-                            ..onTap =
-                                () => context.pushNavigator(LoginScreen()),
-                          text: AppStrings.logInText,
-                          style: 14.txtMediumPBlue),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap =
+                              () => context.pushNavigator(LoginScreen()),
+                        text: AppStrings.logInText,
+                        style: 14.txtMediumPBlue,
+                      ),
                     ]),
                   ),
                 ),

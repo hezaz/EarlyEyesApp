@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:early_eyes/feature/data/models/requestModels/events_res_model.dart';
+import 'package:early_eyes/feature/data/models/requestModels/student_profile_res_model.dart';
 import 'package:early_eyes/services/network/post_request.dart';
 import 'package:early_eyes/utils/alert_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -67,7 +68,7 @@ class HomeController extends GetxController {
   }
   void onClearState() {
     Logger().d('----clear data ---------');
-   messageCtrl.clear();
+    messageCtrl.clear();
     courseName.value = null;
   }
   refreshToken() async {
@@ -113,7 +114,7 @@ class HomeController extends GetxController {
   getDetails(id) {
     final courseDetails = courses;
     final courseDetailsId =
-        courseDetails.indexWhere((element) => element.id == id);
+    courseDetails.indexWhere((element) => element.id == id);
     Logger().d('------$id ----- $courseDetailsId');
     if (courseDetailsId > -1) {
       final details = courseDetails[courseDetailsId];
@@ -134,7 +135,7 @@ class HomeController extends GetxController {
       var response = await GetRequests.getProfile();
       if (response != null) {
         if (response.success) {
-          Preferences.user = response.getProfile;
+          Preferences.user12 = response.getProfile;
           getProfile.value = response.getProfile;
           userProfile.value = response.getProfile?.userDetails;
         }
@@ -247,11 +248,12 @@ class HomeController extends GetxController {
         description: AppImages.coursesGrey),
     CommonModel(
         title: AppStrings.profile,
-        child: Preferences.user?.roleId == 1
-            ? ProfileScreen()
-            : Preferences.user?.roleId == 2
-                ? ParentProfileScreen()
-                : TeacherProfileScreen(),
+        child: Preferences.user?.roleId == '1'
+            ? const ProfileScreen()
+            : Preferences.user?.roleId == '2'
+            ? const ParentProfileScreen()
+            : const TeacherProfileScreen(),
+
         subtitle: AppImages.profile2,
         description: AppImages.profileGrey),
     CommonModel(
@@ -311,7 +313,7 @@ class HomeController extends GetxController {
     }
   }
   RxBool helpEr = RxBool(false);
-   Future<String> needHelp() async {
+  Future<String> needHelp() async {
     try {
       helpLoader.value = true;
       Map<String, String> requestBody = {

@@ -93,8 +93,8 @@ class Data {
 }
 
 class UserDetails {
-  final int? id;
-  final int? userId;
+  final dynamic id;
+  final dynamic userId;
   final String? gender;
   final DateTime? dob;
   final String? userDetailsClass;

@@ -1,7 +1,6 @@
 import 'package:early_eyes/components/coreComponents/TextView.dart';
 import 'package:early_eyes/components/styles/appColors.dart';
 import 'package:early_eyes/components/styles/textStyles.dart';
-
 import 'package:early_eyes/feature/presentation/pages/parent/parent_profile/edit_parent_profile_screen.dart';
 import 'package:early_eyes/feature/presentation/pages/tutor/tutor_profile/edit_teacher_profile_screen.dart';
 import 'package:early_eyes/feature/presentation/pages/settings/settings_page/about_us_screen.dart';
@@ -84,7 +83,7 @@ class SettingsScreen extends StatelessWidget {
                     return const SizedBox(height: 18);
                   },
                   itemCount: controller.accountOptions.length),
-              TextView(
+                  TextView(
                   margin: const EdgeInsets.only(top: 8, bottom: 8),
                   text: AppStrings.support,
                   style: 20.txtMediumPBlue),
